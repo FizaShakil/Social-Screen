@@ -18,8 +18,8 @@ userRouter.route('/register').post(
     
     registerUser
 )
-userRouter.route('./login').post(loginUser)
-userRouter.route('./logout').post(verifyJWT, logoutUser)
-userRouter.route("./refresh-token").post(accessRefreshToken)
+userRouter.route('/login').post(loginUser)
+userRouter.route('/logout').post(verifyJWT, logoutUser)
+userRouter.route("/refresh-token").post(accessRefreshToken)
 
 export default userRouter
