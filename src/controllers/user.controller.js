@@ -118,7 +118,7 @@ const loginUser = asyncHandler(async(req,res)=>{
     }
      
     // find user in database
-    const user = User.findOne({
+    const user = await User.findOne({
         $or: [{username},{email}]
     })
 
@@ -135,7 +135,7 @@ const loginUser = asyncHandler(async(req,res)=>{
     //generate access and refresh token
     const {accessToken, refreshToken} = await user.generateAccessAndRefreshToken(user._id)
 
-    const loggedInUser = User.findById(user._id)
+    const loggedInUser = await User.findById(user._id)
     .select("-password -refreshToken")
 
     const options = { // it is used to make sure that the cookies are modified only from server
